@@ -1,8 +1,11 @@
 // ignore_for_file: library_private_types_in_public_api, use_key_in_widget_constructors
 
+import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:flutter/material.dart';
 import 'package:officechatbox/screens/login_screen.dart';
 import 'package:officechatbox/screens/registration_screen.dart';
+
+import '../components/rounded_btn.dart';
 
 class WelcomeScreen extends StatefulWidget {
   static String id = 'welcome';
@@ -22,24 +25,12 @@ class _WelcomeScreenState extends State<WelcomeScreen>
       duration: const Duration(seconds: 1),
       vsync: this,
     );
-    // animation = CurvedAnimation(parent: controller, curve: Curves.decelerate);
-    //controller.reverse(from: 1.0);
     controller.forward();
-    // animation.addStatusListener((status) {
-    //   print(status);
-    //   if (status == AnimationStatus.completed) {
-    //     controller.reverse(from: 1.0);
-    //   } else {
-    //     controller.forward();
-    //   }
-    // });
-
     animation = ColorTween(begin: Colors.blueGrey, end: Colors.white)
         .animate(controller);
 
     controller.addListener(() {
       setState(() {});
-      print(animation.value);
     });
   }
 
@@ -69,12 +60,20 @@ class _WelcomeScreenState extends State<WelcomeScreen>
                     child: Image.asset('images/wallet.png'),
                   ),
                 ),
-                const Text(
-                  'FLASH CHAT',
-                  style: TextStyle(
-                    fontSize: 40.0,
-                    fontWeight: FontWeight.w900,
-                    color: Colors.black,
+                SizedBox(
+                  child: DefaultTextStyle(
+                    style: const TextStyle(
+                        fontSize: 40.0,
+                        fontWeight: FontWeight.w900,
+                        color: Colors.black),
+                    child: AnimatedTextKit(
+                      animatedTexts: [
+                        TypewriterAnimatedText('FLASH CHAT'),
+                      ],
+                      onTap: () {
+                        print("Tap Event");
+                      },
+                    ),
                   ),
                 ),
               ],
@@ -82,43 +81,20 @@ class _WelcomeScreenState extends State<WelcomeScreen>
             const SizedBox(
               height: 48.0,
             ),
-            Padding(
-              padding: const EdgeInsets.symmetric(vertical: 16.0),
-              child: Material(
-                elevation: 5.0,
-                color: Colors.lightBlueAccent,
-                borderRadius: BorderRadius.circular(30.0),
-                child: MaterialButton(
-                  onPressed: () {
-                    //Go to login screen.
-                    Navigator.pushNamed(context, LoginScreen.id);
-                  },
-                  minWidth: 200.0,
-                  height: 42.0,
-                  child: const Text(
-                    'Log In',
-                  ),
-                ),
-              ),
+            RoundButton(
+              color: Colors.lightBlueAccent,
+              onpress: () {
+                Navigator.pushNamed(context, LoginScreen.id);
+              },
+              title: 'Login',
             ),
-            Padding(
-              padding: const EdgeInsets.symmetric(vertical: 16.0),
-              child: Material(
-                color: Colors.blueAccent,
-                borderRadius: BorderRadius.circular(30.0),
-                elevation: 5.0,
-                child: MaterialButton(
-                  onPressed: () {
-                    //Go to registration screen.
-                    Navigator.pushNamed(context, RegistrationScreen.id);
-                  },
-                  minWidth: 200.0,
-                  height: 42.0,
-                  child: const Text(
-                    'Register',
-                  ),
-                ),
-              ),
+            RoundButton(
+              color: Colors.blueAccent,
+              onpress: () {
+                print('Login pressesde');
+                Navigator.pushNamed(context, RegistrationScreen.id);
+              },
+              title: 'Register',
             ),
           ],
         ),
