@@ -1,5 +1,9 @@
+// ignore_for_file: use_build_context_synchronously
+
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:officechatbox/screens/chat_screen.dart';
+import '../components/rounded_btn.dart';
 import '../constants.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
@@ -14,7 +18,7 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
 
   // final cos never change
 
-  final auth = FirebaseAuth.instance;
+  final _auth = FirebaseAuth.instance;
   late String email;
   late String password;
   @override
@@ -63,27 +67,23 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
             const SizedBox(
               height: 24.0,
             ),
-            Padding(
-              padding: const EdgeInsets.symmetric(vertical: 16.0),
-              child: Material(
-                color: Colors.blueAccent,
-                borderRadius: const BorderRadius.all(Radius.circular(30.0)),
-                elevation: 5.0,
-                child: MaterialButton(
-                  onPressed: () {
-                    //Implement registration functionality.
-                    print(email);
-                    print(password);
-                  },
-                  minWidth: 200.0,
-                  height: 42.0,
-                  child: const Text(
-                    'Register',
-                    style: TextStyle(color: Colors.white),
-                  ),
-                ),
-              ),
-            ),
+            RoundButton(
+              color: Colors.blueAccent,
+              onpress: () async {
+                try {
+                  final newUser = await _auth.createUserWithEmailAndPassword(
+                    email: email,
+                    password: password,
+                  );
+                  if (newUser != null) {
+                    Navigator.popAndPushNamed(context, ChatScreen.id);
+                  }
+                } catch (e) {
+                  print(e);
+                }
+              },
+              title: 'Register',
+            )
           ],
         ),
       ),
