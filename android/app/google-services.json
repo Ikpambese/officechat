@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "456887050971",
+    "project_id": "studycodelabs-5d207",
+    "storage_bucket": "studycodelabs-5d207.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:456887050971:android:a598ac2be3d44a2284e2fe",
+        "android_client_info": {
+          "package_name": "com.ikpambesesnow.officechatbox"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "456887050971-7loqdrccdca0abrm5g8c9492k6e0asml.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBlHJNrOrgDXggKvCxdzbZCR4OQNBwOSN8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "456887050971-7loqdrccdca0abrm5g8c9492k6e0asml.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
