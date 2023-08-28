@@ -64,6 +64,7 @@ class _ChatScreenState extends State<ChatScreen> {
                     child: TextField(
                       onChanged: (value) {
                         //Do something with the user input.
+                        messageText = value;
                       },
                       decoration: kMessageTextFieldDecoration,
                     ),
@@ -72,7 +73,7 @@ class _ChatScreenState extends State<ChatScreen> {
                     onPressed: () {
                       _firestore.collection('messages').add({
                         'text': messageText,
-                        'sender': loggedInUser,
+                        'sender': loggedInUser.email,
                       });
                       //Implement send functionality.
                     },

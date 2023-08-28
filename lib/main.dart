@@ -8,6 +8,7 @@ import 'package:officechatbox/screens/welcome_screen.dart';
 Future<void> main() async {
   await WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
+
   runApp(
     FlashChat(),
   );
