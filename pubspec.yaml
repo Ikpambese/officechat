@@ -69,3 +69,16 @@ flutter:
     - images/
     
 
+  fonts:
+    - family: Acme
+      fonts:
+        - asset: assets/fonts/Acme-Regular.ttf
+    - family: Kiwi
+      fonts:
+        - asset: assets/fonts/KiwiMaru-Medium.ttf
+    - family: Signatra
+      fonts:
+        - asset: assets/fonts/Signatra.ttf
+    - family: Train
+      fonts:
+        - asset: assets/fonts/TrainOne-Regular.ttf
